@@ -84,7 +84,7 @@ date: ${diary.date}
           <p className="text-sm text-[#808080] mb-6 max-w-2xl leading-relaxed">
             此在线面板为插件和数据洞察预览图。系统已为您自动构建了真正的 <strong>Obsidian 插件源码包</strong>。请点击下方按钮下载 <code>diary-insight-plugin.zip</code>。
             <br/><br/>
-            <strong>安装方法：</strong>直接解压该文件，将包含 <code>main.js</code> 等文件的 <strong><code>diary-insight</code></strong> 文件夹，完整放入你本地 Obsidian 笔记库的 <code>.obsidian/plugins/</code> 目录中。最终目录结构必须是 <code>.obsidian/plugins/diary-insight/main.js</code>，然后在 Obsidian 设置中重启并开启此插件即可。
+            <strong>安装方法：</strong>解压该 ZIP 文件后，您会直接获得 <code>main.js</code>、<code>manifest.json</code> 等文件（无嵌套结构）。请在您的 Obsidian 笔记库的 <code>.obsidian/plugins/</code> 目录下新建一个名为 <code>diary-insight</code> 的文件夹，将解压出的文件直接放进去，然后在 Obsidian 第三方插件设置中刷新并开启即可。
           </p>
           <div className="flex gap-4">
             <a 
