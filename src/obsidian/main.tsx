@@ -59,7 +59,7 @@ class DiaryStatsView extends ItemView {
     }
 }
 
-class DiaryPlugin extends Plugin {
+export default class DiaryPlugin extends Plugin {
     async onload() {
         console.log('Loading Diary Insight Plugin');
 
@@ -96,6 +96,3 @@ class DiaryPlugin extends Plugin {
         this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(VIEW_TYPE_STATS)[0]);
     }
 }
-
-module.exports = DiaryPlugin;
-

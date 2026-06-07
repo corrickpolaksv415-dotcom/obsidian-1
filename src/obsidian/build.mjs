@@ -38,9 +38,11 @@ async function buildPlugin() {
   };
 
   const zip = new JSZip();
-  zip.file("main.js", mainJsCode);
-  zip.file("manifest.json", JSON.stringify(manifest, null, 2));
-  zip.file("styles.css", "/* Obsidian plugin custom styles */\n.stats-header { color: var(--interactive-accent); }");
+  const folder = zip.folder("diary-insight");
+  folder.file("main.js", mainJsCode);
+  folder.file("manifest.json", JSON.stringify(manifest, null, 2));
+  folder.file("styles.css", "/* Obsidian plugin custom styles */\n.stats-header { color: var(--interactive-accent); }");
+  folder.file("data.json", JSON.stringify({ trackedNames: [], autoTagNames: true }, null, 2));
 
   const content = await zip.generateAsync({ type: "nodebuffer" });
   fs.writeFileSync(path.join(publicDir, 'diary-insight-plugin.zip'), content);
