@@ -51,66 +51,66 @@ export function StatsView() {
       .slice(0, 8); // Top 8
   }, [diaries]);
 
-  const COLORS = ['#6366f1', '#a855f7', '#ec4899', '#f43f5e', '#f97316', '#eab308', '#22c55e', '#06b6d4'];
+  const COLORS = ['#7C4DFF', '#3b82f6', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6', '#f43f5e'];
 
   return (
-    <div className="flex-1 h-full overflow-y-auto bg-neutral-900 p-8">
+    <div className="flex-1 h-full overflow-y-auto bg-transparent p-8">
       <div className="max-w-6xl mx-auto space-y-8">
         
         <header>
-          <h2 className="text-2xl font-medium tracking-tight text-neutral-100 flex items-center gap-3 mb-2">
+          <h2 className="text-2xl font-bold tracking-tight text-[#202020] flex items-center gap-3 mb-2">
             数据统计洞察
           </h2>
-          <p className="text-neutral-500 text-sm">通过数据了解你的书写习惯和关注焦点。</p>
+          <p className="text-[#808080] text-sm">通过数据了解你的书写习惯和关注焦点。</p>
         </header>
 
         {/* Top Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-neutral-800/40 border border-neutral-800 rounded-xl p-6 flex items-start gap-4">
-            <div className="p-3 bg-indigo-500/10 text-indigo-400 rounded-lg">
+          <div className="bg-white border border-[#E5E5E5] rounded-xl shadow-sm p-6 flex items-start gap-4">
+            <div className="p-3 bg-indigo-50 text-indigo-600 rounded-lg">
               <FileText className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-sm text-neutral-400 mb-1">总日记篇数</p>
-              <h3 className="text-2xl font-medium text-neutral-100">{diaries.length}</h3>
+              <p className="text-sm text-[#808080] mb-1">总日记篇数</p>
+              <h3 className="text-2xl font-bold text-[#202020]">{diaries.length}</h3>
             </div>
           </div>
-          <div className="bg-neutral-800/40 border border-neutral-800 rounded-xl p-6 flex items-start gap-4">
-            <div className="p-3 bg-purple-500/10 text-purple-400 rounded-lg">
+          <div className="bg-white border border-[#E5E5E5] rounded-xl shadow-sm p-6 flex items-start gap-4">
+            <div className="p-3 bg-purple-50 text-purple-600 rounded-lg">
               <TagIcon className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-sm text-neutral-400 mb-1">标签总数</p>
-              <h3 className="text-2xl font-medium text-neutral-100">
+              <p className="text-sm text-[#808080] mb-1">标签总数</p>
+              <h3 className="text-2xl font-bold text-[#202020]">
                 {new Set(diaries.flatMap(d => d.tags)).size}
               </h3>
             </div>
           </div>
-          <div className="bg-neutral-800/40 border border-neutral-800 rounded-xl p-6 flex items-start gap-4">
-            <div className="p-3 bg-pink-500/10 text-pink-400 rounded-lg">
+          <div className="bg-white border border-[#E5E5E5] rounded-xl shadow-sm p-6 flex items-start gap-4">
+            <div className="p-3 bg-pink-50 text-pink-600 rounded-lg">
               <Users className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-sm text-neutral-400 mb-1">跟踪人名数</p>
-              <h3 className="text-2xl font-medium text-neutral-100">{trackedNames.length}</h3>
+              <p className="text-sm text-[#808080] mb-1">跟踪人名数</p>
+              <h3 className="text-2xl font-bold text-[#202020]">{trackedNames.length}</h3>
             </div>
           </div>
         </div>
 
         {/* Charts Row 1 */}
-        <div className="bg-neutral-800/30 border border-neutral-800 rounded-xl p-6">
-          <h3 className="text-sm font-medium text-neutral-300 mb-6">近 14 天写作字数趋势</h3>
+        <div className="bg-white border border-[#E5E5E5] shadow-sm rounded-xl p-6">
+          <h3 className="text-sm font-bold text-[#202020] mb-6">近 14 天写作字数趋势</h3>
           <div className="h-[250px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={last14DaysStats} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#404040" vertical={false} />
-                <XAxis dataKey="date" stroke="#737373" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="#737373" fontSize={12} tickLine={false} axisLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E5E5E5" vertical={false} />
+                <XAxis dataKey="date" stroke="#808080" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="#808080" fontSize={12} tickLine={false} axisLine={false} />
                 <RechartsTooltip 
-                  contentStyle={{ backgroundColor: '#171717', borderColor: '#404040', borderRadius: '8px', color: '#f5f5f5' }}
-                  itemStyle={{ color: '#818cf8' }}
+                  contentStyle={{ backgroundColor: '#fff', borderColor: '#E5E5E5', borderRadius: '8px', color: '#202020' }}
+                  itemStyle={{ color: '#7C4DFF' }}
                 />
-                <Line type="monotone" dataKey="words" stroke="#6366f1" strokeWidth={3} dot={{ r: 4, fill: '#6366f1', strokeWidth: 0 }} activeDot={{ r: 6 }} name="字数" />
+                <Line type="monotone" dataKey="words" stroke="#7C4DFF" strokeWidth={3} dot={{ r: 4, fill: '#7C4DFF', strokeWidth: 0 }} activeDot={{ r: 6 }} name="字数" />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -119,17 +119,17 @@ export function StatsView() {
         {/* Charts Row 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           
-          <div className="bg-neutral-800/30 border border-neutral-800 rounded-xl p-6">
-            <h3 className="text-sm font-medium text-neutral-300 mb-6">提及人名频次统计</h3>
+          <div className="bg-white border border-[#E5E5E5] shadow-sm rounded-xl p-6">
+            <h3 className="text-sm font-bold text-[#202020] mb-6">提及人名频次统计</h3>
             <div className="h-[250px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={nameStats} layout="vertical" margin={{ top: 5, right: 20, bottom: 5, left: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#404040" horizontal={true} vertical={false} />
-                  <XAxis type="number" stroke="#737373" fontSize={12} tickLine={false} axisLine={false} />
-                  <YAxis type="category" dataKey="name" stroke="#a3a3a3" fontSize={12} tickLine={false} axisLine={false} width={60} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E5E5" horizontal={true} vertical={false} />
+                  <XAxis type="number" stroke="#808080" fontSize={12} tickLine={false} axisLine={false} />
+                  <YAxis type="category" dataKey="name" stroke="#808080" fontSize={12} tickLine={false} axisLine={false} width={60} />
                   <RechartsTooltip 
-                    cursor={{fill: '#262626'}}
-                    contentStyle={{ backgroundColor: '#171717', borderColor: '#404040', borderRadius: '8px', color: '#f5f5f5' }}
+                    cursor={{fill: '#F5F5F5'}}
+                    contentStyle={{ backgroundColor: '#fff', borderColor: '#E5E5E5', borderRadius: '8px', color: '#202020' }}
                   />
                   <Bar dataKey="count" radius={[0, 4, 4, 0]} name="提及次数">
                     {nameStats.map((entry, index) => (
@@ -141,19 +141,19 @@ export function StatsView() {
             </div>
           </div>
 
-          <div className="bg-neutral-800/30 border border-neutral-800 rounded-xl p-6">
-            <h3 className="text-sm font-medium text-neutral-300 mb-6">高频标签分布</h3>
+          <div className="bg-white border border-[#E5E5E5] shadow-sm rounded-xl p-6">
+            <h3 className="text-sm font-bold text-[#202020] mb-6">高频标签分布</h3>
             <div className="h-[250px] w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={topTags} margin={{ top: 5, right: 20, bottom: 20, left: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#404040" vertical={false} />
-                  <XAxis dataKey="tag" stroke="#a3a3a3" fontSize={12} tickLine={false} axisLine={false} angle={-45} textAnchor="end" height={60} />
-                  <YAxis stroke="#737373" fontSize={12} tickLine={false} axisLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E5E5" vertical={false} />
+                  <XAxis dataKey="tag" stroke="#808080" fontSize={12} tickLine={false} axisLine={false} angle={-45} textAnchor="end" height={60} />
+                  <YAxis stroke="#808080" fontSize={12} tickLine={false} axisLine={false} />
                   <RechartsTooltip 
-                    cursor={{fill: '#262626'}}
-                    contentStyle={{ backgroundColor: '#171717', borderColor: '#404040', borderRadius: '8px', color: '#f5f5f5' }}
+                    cursor={{fill: '#F5F5F5'}}
+                    contentStyle={{ backgroundColor: '#fff', borderColor: '#E5E5E5', borderRadius: '8px', color: '#202020' }}
                   />
-                  <Bar dataKey="count" radius={[4, 4, 0, 0]} name="使用次数" fill="#a855f7" />
+                  <Bar dataKey="count" radius={[4, 4, 0, 0]} name="使用次数" fill="#7C4DFF" />
                 </BarChart>
               </ResponsiveContainer>
             </div>

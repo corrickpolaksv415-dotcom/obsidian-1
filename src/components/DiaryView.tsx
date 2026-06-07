@@ -70,26 +70,26 @@ export function DiaryView() {
   };
 
   return (
-    <div className="flex h-full bg-neutral-900">
+    <div className="flex h-full bg-transparent">
       {/* List Pane */}
-      <div className="w-[300px] border-r border-neutral-800 flex flex-col bg-neutral-900/50">
-        <div className="p-4 border-b border-neutral-800">
+      <div className="w-[300px] shrink-0 border-r border-[#DCDCDC] flex flex-col bg-white">
+        <div className="p-4 border-b border-[#DCDCDC]">
           <button 
             onClick={handleCreateDraft}
-            className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md transition-colors text-sm font-medium"
+            className="w-full flex items-center justify-center gap-2 bg-[#7C4DFF] hover:opacity-90 text-white py-2 rounded-md transition-colors text-sm font-medium shadow-sm"
           >
             <Plus className="w-4 h-4" />
             新建今日日记
           </button>
           
           <div className="mt-4 relative">
-            <Search className="w-4 h-4 absolute left-3 top-2.5 text-neutral-500" />
+            <Search className="w-4 h-4 absolute left-3 top-2.5 text-[#808080]" />
             <input 
               type="text" 
               placeholder="搜索日记或标签..." 
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full bg-neutral-800 text-neutral-200 text-sm rounded-md pl-9 pr-3 py-2 outline-none focus:ring-1 focus:ring-indigo-500 transition-shadow"
+              className="w-full bg-white border border-[#DCDCDC] text-[#202020] text-sm rounded-md pl-9 pr-3 py-2 outline-none focus:border-transparent focus:ring-1 focus:ring-[#7C4DFF] transition-shadow shadow-sm"
             />
           </div>
         </div>
@@ -101,32 +101,32 @@ export function DiaryView() {
               onClick={() => setSelectedId(diary.id)}
               className={`p-3 rounded-lg cursor-pointer transition-colors ${
                 selectedId === diary.id 
-                  ? 'bg-neutral-800 border-l-2 border-indigo-500' 
-                  : 'hover:bg-neutral-800/60 border-l-2 border-transparent'
+                  ? 'bg-white border-l-[3px] border-[#7C4DFF] shadow-sm' 
+                  : 'hover:bg-gray-50 border-l-[3px] border-transparent'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm font-medium text-neutral-200">{diary.date}</span>
+                <span className="text-sm font-bold text-[#202020]">{diary.date}</span>
               </div>
-              <p className="text-xs text-neutral-500 line-clamp-2 leading-relaxed">
+              <p className="text-xs text-[#5C5C5C] line-clamp-2 leading-relaxed">
                 {diary.content || '无内容...'}
               </p>
               {diary.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1 mt-2">
                   {diary.tags.slice(0, 3).map(tag => (
-                    <span key={tag} className="text-[10px] bg-neutral-700/50 text-neutral-400 px-1.5 py-0.5 rounded">
+                    <span key={tag} className="text-[10px] bg-[#F8F9FF] border border-[#E0E4FF] text-[#7C4DFF] px-1.5 py-0.5 rounded">
                       #{tag}
                     </span>
                   ))}
                   {diary.tags.length > 3 && (
-                    <span className="text-[10px] text-neutral-500 px-1.5 py-0.5">+{diary.tags.length - 3}</span>
+                    <span className="text-[10px] text-[#808080] px-1.5 py-0.5">+{diary.tags.length - 3}</span>
                   )}
                 </div>
               )}
             </div>
           ))}
           {filteredDiaries.length === 0 && (
-            <div className="text-center text-xs text-neutral-500 py-8">
+            <div className="text-center text-xs text-[#808080] py-8">
               没有找到相关日记
             </div>
           )}
@@ -134,11 +134,11 @@ export function DiaryView() {
       </div>
 
       {/* Editor Pane */}
-      <div className="flex-1 flex flex-col h-full bg-neutral-900">
+      <div className="flex-1 flex flex-col bg-white m-6 rounded-xl border border-[#E5E5E5] shadow-sm overflow-hidden">
         {selectedDiary ? (
           <>
-            <div className="px-8 py-6 border-b border-neutral-800 flex items-center justify-between">
-              <h2 className="text-xl font-medium tracking-tight text-neutral-100 flex items-center gap-3">
+            <div className="px-8 py-6 border-b border-[#E5E5E5] flex items-center justify-between">
+              <h2 className="text-xl font-bold tracking-tight text-[#202020] flex items-center gap-3">
                 {selectedDiary.date}
               </h2>
               <button 
@@ -148,7 +148,7 @@ export function DiaryView() {
                     setSelectedId(null);
                   }
                 }}
-                className="p-2 text-neutral-500 hover:text-red-400 hover:bg-neutral-800 rounded transition-colors tooltip"
+                className="p-2 text-[#808080] hover:text-red-500 hover:bg-gray-100 rounded transition-colors tooltip"
                 title="删除日记"
               >
                 <Trash2 className="w-4 h-4" />
@@ -160,17 +160,17 @@ export function DiaryView() {
                 value={selectedDiary.content}
                 onChange={(e) => handleContentChange(e.target.value)}
                 placeholder="在此输入日记内容... 输入关键词自动打标签，或使用 #标签 添加"
-                className="flex-1 w-full p-8 bg-transparent text-neutral-200 text-base leading-loose resize-none outline-none font-sans"
+                className="flex-1 w-full p-8 bg-transparent text-[#202020] text-base leading-loose resize-none outline-none font-sans"
               />
             </div>
 
             {selectedDiary.tags.length > 0 && (
-               <div className="px-8 py-4 border-t border-neutral-800 bg-neutral-950/30 flex flex-wrap gap-2 items-center">
-                 <Tag className="w-4 h-4 text-neutral-500 mr-1" />
+               <div className="px-8 py-4 border-t border-[#E5E5E5] bg-gray-50 flex flex-wrap gap-2 items-center">
+                 <Tag className="w-4 h-4 text-[#808080] mr-1" />
                  {selectedDiary.tags.map(tag => (
-                   <span key={tag} className="flex items-center gap-1 text-xs bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-2 py-1 rounded-md">
+                   <span key={tag} className="flex items-center gap-1 text-xs bg-[#F8F9FF] text-[#7C4DFF] border border-[#E0E4FF] px-2 py-1 rounded-md">
                      #{tag}
-                     <button onClick={() => removeTag(tag)} className="hover:text-white transition-colors">
+                     <button onClick={() => removeTag(tag)} className="hover:text-red-500 transition-colors">
                        &times;
                      </button>
                    </span>
@@ -179,7 +179,7 @@ export function DiaryView() {
             )}
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center text-neutral-600 flex-col gap-4">
+          <div className="flex-1 flex items-center justify-center text-[#808080] flex-col gap-4">
             <BookOpen className="w-12 h-12 opacity-20" />
             <p>选择一篇日记或者新建今日日记</p>
           </div>
