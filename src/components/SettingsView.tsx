@@ -81,8 +81,10 @@ date: ${diary.date}
             <DownloadCloud className="w-6 h-6 text-[#7C4DFF]" />
             下载原生 Obsidian 插件
           </h3>
-          <p className="text-sm text-[#808080] mb-6 max-w-2xl">
-            此在线面板为插件和数据洞察预览图。系统已为您自动构建了真正的 <strong>Obsidian 插件源码包</strong>。您可以点击下方按钮下载，解压后将其放入笔记库的 <code>.obsidian/plugins/</code> 目录进行安装激活。
+          <p className="text-sm text-[#808080] mb-6 max-w-2xl leading-relaxed">
+            此在线面板为插件和数据洞察预览图。系统已为您自动构建了真正的 <strong>Obsidian 插件源码包</strong>。请点击下方按钮下载 <code>diary-insight-plugin.zip</code>。
+            <br/><br/>
+            <strong>安装方法：</strong>解压该文件，将解压后包含 <code>main.js</code> 和 <code>manifest.json</code> 的文件夹，拖入你本地 Obsidian 笔记库的 <code>.obsidian/plugins/</code> 目录中，然后在 Obsidian 设置中开启此插件即可。
           </p>
           <div className="flex gap-4">
             <a 
