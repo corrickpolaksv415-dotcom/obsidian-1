@@ -1,0 +1,8 @@
+{
+  "name": "Obsidian 助手 - 日记洞察引擎",
+  "description": "管理日记、统计人名、自动标签化并生成图表的 Obsidian 辅助工具",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
