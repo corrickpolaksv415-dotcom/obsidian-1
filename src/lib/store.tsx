@@ -51,6 +51,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     ];
   });
 
+  const [autoTagNames, setAutoTagNames] = useState<boolean>(() => {
+    const saved = localStorage.getItem('obsidian_auto_tag_names');
+    return saved ? JSON.parse(saved) : true;
+  });
+
   useEffect(() => {
     localStorage.setItem('obsidian_diaries', JSON.stringify(diaries));
   }, [diaries]);
@@ -62,6 +67,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     localStorage.setItem('obsidian_auto_tags', JSON.stringify(autoTagRules));
   }, [autoTagRules]);
+
+  useEffect(() => {
+    localStorage.setItem('obsidian_auto_tag_names', JSON.stringify(autoTagNames));
+  }, [autoTagNames]);
 
   const addDiary = (diaryData: Omit<Diary, 'id'>) => {
     const newDiary: Diary = { ...diaryData, id: Date.now().toString() };
@@ -107,10 +116,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   return (
     <AppContext.Provider value={{
-      diaries, trackedNames, autoTagRules,
+      diaries, trackedNames, autoTagRules, autoTagNames,
       addDiary, updateDiary, deleteDiary,
       addTrackedName, removeTrackedName,
       addAutoTagRule, removeAutoTagRule,
+      setAutoTagNames,
       importDiaries
     }}>
       {children}

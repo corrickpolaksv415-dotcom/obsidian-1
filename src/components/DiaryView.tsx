@@ -5,7 +5,7 @@ import { Plus, Search, Tag, Trash2 } from 'lucide-react';
 import { Diary } from '../types';
 
 export function DiaryView() {
-  const { diaries, addDiary, updateDiary, deleteDiary, autoTagRules } = useAppStore();
+  const { diaries, addDiary, updateDiary, deleteDiary, autoTagRules, autoTagNames, trackedNames } = useAppStore();
   const [selectedId, setSelectedId] = useState<string | null>(diaries[0]?.id || null);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -49,6 +49,14 @@ export function DiaryView() {
         updatedTags.push(rule.tag);
       }
     });
+
+    if (autoTagNames) {
+      trackedNames.forEach(name => {
+        if (val.includes(name) && !updatedTags.includes(name)) {
+          updatedTags.push(name);
+        }
+      });
+    }
 
     // Also parse hashtags dynamically from "#text " 
     const hashtagRegex = /#([\w\u4e00-\u9fa5]+)/g;

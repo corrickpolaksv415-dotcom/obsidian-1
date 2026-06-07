@@ -8,6 +8,7 @@ export function SettingsView() {
   const { 
     trackedNames, addTrackedName, removeTrackedName,
     autoTagRules, addAutoTagRule, removeAutoTagRule,
+    autoTagNames, setAutoTagNames,
     diaries
   } = useAppStore();
 
@@ -125,7 +126,7 @@ date: ${diary.date}
               </button>
             </form>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-6">
               {trackedNames.map(name => (
                 <span key={name} className="flex items-center gap-1.5 bg-[#F8F9FF] border border-[#E0E4FF] text-[#7C4DFF] text-sm px-3 py-1.5 rounded-full">
                   {name}
@@ -137,6 +138,14 @@ date: ${diary.date}
               {trackedNames.length === 0 && (
                 <span className="text-sm text-[#808080]">暂无跟踪名单。</span>
               )}
+            </div>
+
+            <div className="mt-auto pt-4 border-t border-[#E5E5E5] flex items-center justify-between">
+              <span className="text-sm font-medium text-[#202020]">将出现的人名转为标签</span>
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" className="sr-only peer" checked={autoTagNames} onChange={(e) => setAutoTagNames(e.target.checked)} />
+                <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#7C4DFF]"></div>
+              </label>
             </div>
           </section>
 
